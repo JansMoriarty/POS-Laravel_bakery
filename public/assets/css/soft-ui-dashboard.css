@@ -27960,6 +27960,137 @@ pre[class*=language-] {
   margin-top: 16px;
 }
 
+.title-stock {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 0px;
+  text-align: center;
+}
+
+.stok {
+  margin: 8px 0 4px;
+  margin-top: 24px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.img-container img {
+  border-radius: 12px;
+}
+
+.price {
+  font-size: 12px;
+}
+
+
+.menu-title {
+  font-family: 'Poppins';
+  font-weight: 600;
+  margin-top: 40px;
+}
+
+.categories-wrapper {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
+.category-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f8f8f8;
+  border-radius: 15px;
+  width: 180px;
+  padding: 15px 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.category-card:hover {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.icon-wrapper {
+  background-color: #e0e0e0;
+  border-radius: 50%;
+  padding: 10px;
+  margin-bottom: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.icon-wrapper i {
+  font-size: 20px;
+  color: #555;
+}
+
+.category-card.active {
+  border-color: #F97316;
+}
+
+.category-card.active .icon-wrapper {
+  background-color: #F97316;
+}
+
+.category-card.active i {
+  color: white;
+}
+
+.category-text {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  gap: 10px;
+  max-width: 1030px; /* kamu bisa ubah jadi 100% kalau mau full */
+  width: 100%;
+}
+
+.search-input {
+  flex: 1;
+  padding: 18px 25px;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  font-size: 14px;
+}
+
+.search-form button {
+  background-color: #F97316; /* warna pastel soft, bisa diganti sesuai tema kamu */
+  border: none;
+  padding: 16px 20px;
+  border-radius: 80px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-form button i {
+  font-size: 16px;
+  color: white; /* warna icon, bisa disesuaikan */
+}
+
+.search-form button:hover {
+  background-color: #f6c88f; /* warna saat hover */
+}
+
+
+
+
+
+
+
+
+
 
 .product-card {
   width: 240px;
@@ -27971,6 +28102,7 @@ pre[class*=language-] {
   transition: 0.3s;
   margin: 12px;
   height: 335px;
+  transition: 0.3s ease;
 
 }
 
@@ -27980,7 +28112,13 @@ pre[class*=language-] {
   background-color: #f0f0f0;
   height: 200px;
   border-radius: 12px;
+  transition: transform 0.4s ease;
 }
+
+.product-card:hover .img-container {
+  transform: translateY(-2px);
+}
+
 
 .product-card h4 {
   margin: 8px 0 4px;
@@ -28004,5 +28142,32 @@ pre[class*=language-] {
   font-size: 16px;
   color: #333;
 }
+
+
+.edit-icon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 6px 8px;
+  border-radius: 6px;
+  color: #f59e0b;
+  text-decoration: none;
+  z-index: 2;
+  transition: transform 0.2s ease;
+}
+
+.edit-icon:hover {
+  transform: scale(1.1);
+  color: #d97706;
+}
+
+.hidden {
+  display: none;
+}
+
+
+
+
 
 /*# sourceMappingURL=dashboard-free.css.map */
