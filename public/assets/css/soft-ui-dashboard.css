@@ -28115,9 +28115,7 @@ pre[class*=language-] {
   transition: transform 0.4s ease;
 }
 
-.product-card:hover .img-container {
-  transform: translateY(-2px);
-}
+
 
 
 .product-card h4 {

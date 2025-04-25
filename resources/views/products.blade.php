@@ -166,10 +166,10 @@
                 </nav>
                 <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                     <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-                        
+
                     </div>
                     <ul class="navbar-nav  justify-content-end">
-                        
+
                         <li class="nav-item d-flex align-items-center">
                             <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
                                 <i class="fa fa-user me-sm-1"></i>
@@ -195,8 +195,8 @@
                                 <i class="fa fa-bell cursor-pointer"></i>
                             </a>
                             <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
-                                
-                                
+
+
 
                             </ul>
                         </li>
@@ -217,17 +217,17 @@
 
                         <div class="product-actions mb-4" style="display: flex; gap: 10px;">
                             <!-- Tambah Produk -->
-                            <a href="{{ route('products.create') }}" class="btn-action" style="background-color: #F97417; color: white; padding: 8px 14px; border-radius: 50px; display: flex; align-items: center; gap: 8px;">
+                            <a href="javascript:void(0)" onclick="bukaModal()" class="btn-action" style="background-color: #F97417; color: white; padding: 8px 14px; border-radius: 50px; display: flex; align-items: center; gap: 8px;">
                                 <i class="fas fa-plus"></i> Tambah Produk
                             </a>
 
                             <!-- Edit Produk
-                            <a href="#" class="btn-action" style="background-color: #B8854D; color: white; padding: 8px 14px; border-radius: 8px; display: flex; align-items: center; gap: 8px;">
+                            <a href="#" class="btn-action" style="background-color: #F97417; color: white; padding: 8px 14px; border-radius: 8px; display: flex; align-items: center; gap: 8px;">
                                 <i class="fas fa-edit"></i> Edit Produk
                             </a> -->
 
                             <!-- Edit Produk -->
-                            <button id="toggle-edit" class="btn-action" style="background-color: #F97417; color: white; padding: 8px 14px; border-radius: 50px; display: flex; align-items: center; gap: 8px; border: none;">
+                            <button id="toggle-edit" onclick="toggleEditIcons()" class="btn-action" style="background-color: #F97417; color: white; padding: 8px 14px; border-radius: 50px; display: flex; align-items: center; gap: 8px; border: none;">
                                 <i class="fas fa-edit"></i> Edit Produk
                             </button>
 
@@ -235,12 +235,15 @@
 
 
 
+
                             <!-- Hapus Produk -->
 
                             <!-- Hapus Produk -->
-                            <button onclick="showDeleteIcon(this)" class="btn-action" style="background-color: crimson; color: white; padding: 8px 14px; border-radius: 50px; display: flex; align-items: center; gap: 8px; border: none;">
+                            <!-- Tombol di luar looping -->
+                            <!-- <button onclick="toggleDeleteIcons()" class="btn-action" style="background-color: crimson; color: white; padding: 8px 14px; border-radius: 50px; display: flex; align-items: center; gap: 8px; border: none;">
                                 <i class="fas fa-trash-alt"></i> Hapus Produk
-                            </button>
+                            </button> -->
+
 
 
                         </div>
@@ -249,11 +252,28 @@
 
                         @foreach($products as $product)
                         <div class="product-card" style="position: relative;">
-                            <!-- Icon edit, tersembunyi default -->
-                            <a href="{{ route('products.update', $product->id) }}" class="edit-icon hidden">
-                                <i class="fas fa-edit"></i>
+
+                            <!-- Tombol Edit (kiri atas) -->
+                            <a href="{{ route('products.update', $product->id) }}" class="edit-form" style="position: absolute; top: 10px; right: 50px; display: none;">
+                                <button type="button"
+                                    style="background: #F97417; border: none; border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                                    <i class="fas fa-edit" style="color: white; font-size: 16px;"></i>
+                                </button>
                             </a>
 
+
+                            <!-- Tombol Delete (kanan atas) -->
+                            <form action="{{ route('products.destroy', $product->id) }}" method="POST" class="delete-form" id="deleteForm{{ $product->id }}" style="position: absolute; top: 10px; right: 10px;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="button" onclick="showConfirmModal({{ $product->id }})"
+                                    style="background: crimson; border: none; border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                                    <i class="fas fa-trash-alt" style="color: white; font-size: 16px;"></i>
+                                </button>
+                            </form>
+
+
+                            <!-- Gambar produk -->
                             <div class="img-container">
                                 @if($product->gambar)
                                 <img src="{{ asset('images/' . $product->gambar) }}" width="100%" height="200" style="object-fit: cover;">
@@ -270,14 +290,9 @@
                                 <div class="price" style="font-size: 15px;">Rp. {{ number_format($product->price, 2) }}</div>
                             </div>
 
-                            <!-- Icon Hapus Produk (Tersembunyi default) -->
-                            <a href="#" class="delete-icon" style="position: absolute; top: 10px; right: 10px; display: none; color: red;">
-                                <i class="fas fa-trash-alt" style="color: red;"></i>
-                            </a>
+
                         </div>
                         @endforeach
-
-
 
 
 
@@ -354,6 +369,91 @@
             </div>
         </div>
     </div>
+
+
+
+    <!-- Modal Tambah Produk -->
+    <div id="modalTambahProduk" class="modal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); justify-content: center; align-items: center;">
+        <div style="background: white; padding: 24px; border-radius: 12px; width: 420px; position: relative;">
+            <h2 style="margin-top: 0; margin-bottom: 20px;">Tambah Produk Baru</h2>
+
+            <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+
+                <div style="margin-bottom: 14px;">
+                    <label style="display: block; margin-bottom: 6px;">Nama Produk:</label>
+                    <input type="text" name="name" required style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
+                </div>
+
+                <div style="margin-bottom: 14px;">
+                    <label style="display: block; margin-bottom: 6px;">Kategori:</label>
+                    <select name="kategori" required style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
+                        <option value="pastry">Pastry</option>
+                        <option value="with cheese">With Cheese</option>
+                        <option value="cake">Cake</option>
+                    </select>
+                </div>
+
+                <div style="margin-bottom: 14px;">
+                    <label style="display: block; margin-bottom: 6px;">Harga:</label>
+                    <input type="number" name="price" step="0.01" required style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
+                </div>
+
+                <div style="margin-bottom: 14px;">
+                    <label style="display: block; margin-bottom: 6px;">Stok:</label>
+                    <input type="number" name="stock" required style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
+                </div>
+
+                <div style="margin-bottom: 14px;">
+                    <label style="display: block; margin-bottom: 6px;">Satuan:</label>
+                    <input type="text" name="unit" required style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 6px;">Gambar (opsional):</label>
+                    <input type="file" name="gambar" style="width: 100%; padding: 6px; border-radius: 8px; border: 1px solid #ccc;">
+                </div>
+
+                <div style="display: flex; justify-content: flex-end; gap: 10px;">
+                    <button type="button" onclick="tutupModal()" style="background-color: #444; color: white; border: none; padding: 8px 14px; border-radius: 8px;">Batal</button>
+                    <button type="submit" style="background-color: #F97417; color: white; border: none; padding: 8px 14px; border-radius: 8px;">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Konfirmasi -->
+    <div id="confirmModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.4); justify-content:center; align-items:center; z-index:9999;">
+        <div style="background:white; padding:30px; border-radius:20px; width:600px; display: flex; gap: 20px; align-items: center;">
+
+            <!-- Lottie kiri -->
+            <div style="flex: 0 0 200px; display: flex; justify-content: center;">
+                <dotlottie-player
+                    src="https://lottie.host/ab764c43-5e1a-4eb8-94d6-c8af2945f78f/bMgL8Ph3ek.lottie"
+                    background="transparent"
+                    speed="1"
+                    style="width: 200px; height: 200px"
+                    loop
+                    autoplay>
+                </dotlottie-player>
+            </div>
+
+            <!-- Konten kanan -->
+            <div style="flex: 1;">
+                <h3 style="margin-top: 0;">Hapus Produk?</h3>
+                <p style="font-size:14px;">Aksi ini tidak bisa dibatalkan. Apakah kamu yakin ingin menghapus produk ini?</p>
+                <div style="margin-top: 20px; display:flex; gap: 10px;">
+                    <button onclick="submitDelete()" style="background:crimson; color:white; border:none; padding:8px 16px; border-radius:8px;">Ya, Hapus</button>
+                    <button onclick="hideConfirmModal()" style="background:#ccc; border:none; padding:8px 16px; border-radius:8px;">Batal</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
     <!--   Core JS Files   -->
     <script src="../assets/js/core/popper.min.js"></script>
     <script src="../assets/js/core/bootstrap.min.js"></script>
@@ -368,7 +468,7 @@
             Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
         }
     </script>
-    <script>
+    <!-- <script>
         const toggleBtn = document.getElementById('toggle-edit');
         let editing = false;
 
@@ -381,9 +481,9 @@
                 '<i class="fas fa-times"></i> Selesai Edit' :
                 '<i class="fas fa-edit"></i> Edit Produk';
         });
-    </script>
+    </script> -->
 
-    <script>
+    <!-- <script>
         function showDeleteIcons() {
             // Ambil semua icon hapus di dalam produk
             const deleteIcons = document.querySelectorAll('.delete-icon');
@@ -397,13 +497,101 @@
                 }
             });
         }
+    </script> -->
+
+    <script
+        src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
+        type="module"></script>
+
+    <script>
+        let deleteMode = false;
+        let editMode = false;
+
+        function toggleDeleteIcons(button) {
+            deleteMode = !deleteMode;
+            const icons = document.querySelectorAll('.delete-form');
+
+            icons.forEach(icon => {
+                icon.style.display = deleteMode ? 'block' : 'none';
+            });
+
+            // Ubah icon dan teks tombol
+            if (deleteMode) {
+                button.innerHTML = '<i class="fas fa-times"></i> Selesai Hapus';
+            } else {
+                button.innerHTML = '<i class="fas fa-trash-alt"></i> Hapus Produk';
+            }
+        }
+
+        function toggleEditIcons(button) {
+            editMode = !editMode;
+            const icons = document.querySelectorAll('.edit-form');
+
+            icons.forEach(icon => {
+                icon.style.display = editMode ? 'block' : 'none';
+            });
+
+            // Ubah icon dan teks tombol
+            if (editMode) {
+                button.innerHTML = '<i class="fas fa-times"></i> Selesai Edit';
+            } else {
+                button.innerHTML = '<i class="fas fa-edit"></i> Edit Produk';
+            }
+        }
     </script>
+
+    <script>
+        let currentFormId = null;
+
+        function showConfirmModal(id) {
+            currentFormId = id;
+            document.getElementById('confirmModal').style.display = 'flex';
+
+            lottie.loadAnimation({
+                container: document.getElementById('lottieConfirm'),
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: 'https://assets1.lottiefiles.com/packages/lf20_jbrw3hcz.json' // animasi hapus
+            });
+        }
+
+        function hideConfirmModal() {
+            document.getElementById('confirmModal').style.display = 'none';
+            document.getElementById('lottieConfirm').innerHTML = ''; // reset animasi
+        }
+
+        function submitDelete() {
+            document.getElementById('deleteForm' + currentFormId).submit();
+        }
+    </script>
+
+
 
 
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="../assets/js/soft-ui-dashboard.min.js?v=1.1.0"></script>
+
+    <script>
+        function bukaModal() {
+            document.getElementById('modalTambahProduk').style.display = 'flex';
+        }
+
+        function tutupModal() {
+            document.getElementById('modalTambahProduk').style.display = 'none';
+        }
+
+        // Optional: tutup modal jika klik di luar
+        window.onclick = function(e) {
+            const modal = document.getElementById('modalTambahProduk');
+            if (e.target === modal) {
+                tutupModal();
+            }
+        }
+    </script>
+
 </body>
 
 </html>

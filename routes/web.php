@@ -24,6 +24,6 @@ Route::get('/products', [ProductController::class, 'index'])->name('products.ind
 Route::get('/products/{id}/update', [ProductController::class, 'showUpdateForm'])->name('products.update.form');
 
 
-Route::post('/products/{id}/update', [ProductController::class, 'update'])->name('products.update');
+Route::put('/products/{id}/update', [ProductController::class, 'update'])->name('products.update');
 
 Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
