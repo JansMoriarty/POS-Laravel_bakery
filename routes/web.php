@@ -3,12 +3,18 @@
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserPosController;
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-// Route::get('/', [ProductController::class, 'index'])->name('home');
 
-// Route::get('/products/{id}/update', [ProductController::class, 'update'])->name('products.update');
+
+Route::resource('user_pos', UserPosController::class);
+
+// Route::resource('user_pos', UserPosController::class)->parameters([
+//     'user_pos' => 'user',
+// ]);
+
 
 
 
