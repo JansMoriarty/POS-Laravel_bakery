@@ -15,6 +15,14 @@ Route::resource('user_pos', UserPosController::class);
 //     'user_pos' => 'user',
 // ]);
 
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('login');
+
+Route::post('/login', [App\Http\Controllers\LoginController::class, 'authenticate'])->name('user.login');
+
+
+
 
 
 

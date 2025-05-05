@@ -28115,6 +28115,11 @@ pre[class*=language-] {
   transition: transform 0.4s ease;
 }
 
+.custom-border {
+  border-width: 2px;
+  border-color: #F97417;
+  border-style: solid;
+}
 
 
 

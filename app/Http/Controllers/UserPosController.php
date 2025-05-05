@@ -50,16 +50,20 @@ class UserPosController extends Controller
     }
 
     // Menampilkan detail pengguna
-    public function show(UserPos $userPos)
+    public function show($id)
     {
-        return view('user_pos.show', compact('userPos'));
+        $userPos = UserPos::findOrFail($id); // Cari berdasarkan ID
+        return view('user_pos.show', compact('userPos')); // Kirim ke view
     }
 
+
     // Menampilkan form untuk mengedit pengguna
-    public function edit(UserPos $userPos)
+    public function edit($id)
     {
-        return view('user_pos.edit', compact('userPos'));
+        $userPos = UserPos::findOrFail($id); // Cari user berdasarkan ID
+        return view('user_pos.edit', compact('userPos')); // Oper ke view
     }
+
 
     // Memperbarui data pengguna
     public function update(Request $request, UserPos $userPos)
@@ -93,13 +97,19 @@ class UserPosController extends Controller
     }
 
     // Menghapus pengguna
-    public function destroy(UserPos $userPos)
+    public function destroy($id)
     {
+        $userPos = UserPos::findOrFail($id); // Cari berdasarkan ID
+
         if ($userPos->photo) {
-            unlink(storage_path('app/public/' . $userPos->photo));
+            $photoPath = storage_path('app/public/' . $userPos->photo);
+            if (file_exists($photoPath)) {
+                unlink($photoPath); // Hapus file jika ada
+            }
         }
 
         $userPos->delete();
+
         return redirect()->route('user_pos.index')->with('success', 'User deleted successfully');
     }
 }

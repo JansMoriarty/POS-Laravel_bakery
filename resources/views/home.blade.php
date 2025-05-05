@@ -30,6 +30,8 @@
   <link href="https://demos.creative-tim.com/soft-ui-dashboard/assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- Font Awesome Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
 
   <!-- <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script> -->
   <!-- CSS Files -->
@@ -91,6 +93,27 @@
             <span class="nav-link-text ms-1">Products Management</span>
           </a>
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link  " href="{{route('user_pos.index')}}">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <title>credit-card</title>
+                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                    <g transform="translate(1716.000000, 291.000000)">
+                      <g transform="translate(453.000000, 454.000000)">
+                        <path class="color-background opacity-6" d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z"></path>
+                        <path class="color-background" d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z"></path>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </div>
+            <span class="nav-link-text ms-1">Users</span>
+          </a>
+        </li>
       </ul>
     </div>
 
@@ -110,14 +133,26 @@
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
 
           </div>
-          <ul class="navbar-nav  justify-content-end">
+          <ul class="navbar-nav justify-content-end align-items-center">
 
-            <li class="nav-item d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
-                <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none">Sign In</span>
+            <!-- Profil Pengguna -->
+            <li class="nav-item dropdown pe-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-body d-flex align-items-center p-0" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="https://i.pravatar.cc/40?img=3" class="rounded-circle me-2" alt="Avatar" style="width: 36px; height: 36px;">
+                <span class="d-none d-sm-inline font-weight-bold">John Doe</span>
+                <i class="fa fa-chevron-down ms-2 text-xs"></i>
               </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item text-danger" href="#"><i class="fa fa-sign-out me-2"></i>Logout</a></li>
+              </ul>
             </li>
+
+            <!-- Toggler Sidenav (mobile) -->
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
                 <div class="sidenav-toggler-inner">
@@ -127,19 +162,13 @@
                 </div>
               </a>
             </li>
-            <li class="nav-item px-3 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body p-0">
-                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
-              </a>
-            </li>
-            <li class="nav-item dropdown pe-2 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa fa-bell cursor-pointer"></i>
-              </a>
 
+            
 
-            </li>
+           
+
           </ul>
+
         </div>
       </div>
     </nav>
@@ -192,6 +221,59 @@
           </div>
         </div>
       </div>
+      <div class="row mt-4">
+        <!-- Card: Profit Hari Ini -->
+        <div class="col-md-4 mb-3">
+          <div class="card shadow-sm border-0 h-100">
+            <div class="card-body d-flex align-items-center">
+              <div class="custom-border rounded-circle d-flex align-items-center justify-content-center me-3"
+                style="width: 50px; height: 50px; background-color: white;">
+                <i class="bi bi-cash-coin fs-4" style="color: #F97417;"></i>
+              </div>
+
+
+              <div>
+                <h6 class="mb-0">Profit Hari Ini</h6>
+                <small class="text-muted">Rp 1.250.000</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: Jumlah Transaksi -->
+        <div class="col-md-4 mb-3">
+          <div class="card shadow-sm border-0 h-100">
+            <div class="card-body d-flex align-items-center">
+              <div class="custom-border rounded-circle d-flex align-items-center justify-content-center me-3"
+                style="width: 50px; height: 50px; background-color: white;">
+                <i class="bi bi-repeat fs-4" style="color: #F97417;"></i>
+              </div>
+              <div>
+                <h6 class="mb-0">Transaksi</h6>
+                <small class="text-muted">85 transaksi</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: Stok Hampir Habis -->
+        <div class="col-md-4 mb-3">
+          <div class="card shadow-sm border-0 h-100">
+            <div class="card-body d-flex align-items-center">
+              <div class="custom-border rounded-circle d-flex align-items-center justify-content-center me-3"
+                style="width: 50px; height: 50px; background-color: white;">
+                <i class="bi bi-exclamation-triangle-fill fs-4 " style="color: #F97417;"></i>
+              </div>
+              <div>
+                <h6 class="mb-0">Stok Hampir Habis</h6>
+                <small class="text-muted">5 produk</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
       <h4 class="menu-title">— Menu</h4>
       <!-- Category Filter Cards -->
       <div class="categories-wrapper">
@@ -216,7 +298,7 @@
         </a>
       </div>
 
-      
+
       <form action="{{ route('home') }}" method="GET" class="search-form">
         @if(request('category'))
         <input type="hidden" name="category" value="{{ request('category') }}">

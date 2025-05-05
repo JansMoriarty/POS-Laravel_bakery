@@ -19,9 +19,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <link rel="icon" type="image/png" href="../assets/img/cremeco.png">
     <title>
-        Soft UI Dashboard 3 by Creative Tim
+    Créme Co.
     </title>
     <!--     Fonts and icons     -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
@@ -44,15 +44,15 @@
         <div class="sidenav-header">
             <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
             <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/soft-ui-dashboard/pages/dashboard.html " target="_blank">
-                <img src="../assets/img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo">
-                <span class="ms-1 font-weight-bold">Soft UI Dashboard 3</span>
+                <img src="../assets/img/cremeco.png" class="navbar-brand-img h-100" alt="main_logo">
+                <span class="ms-1 font-weight-bold">Créme Co.</span>
             </a>
         </div>
         <hr class="horizontal dark mt-0">
         <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link  " href="../pages/dashboard.html">
+                    <a class="nav-link  " href="{{route('home')}}">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <title>shop </title>
@@ -68,7 +68,7 @@
                                 </g>
                             </svg>
                         </div>
-                        <span class="nav-link-text ms-1">Dashboard</span>
+                        <span class="nav-link-text ms-1">Home</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -122,20 +122,15 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                         <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
-                        <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Tables</li>
+                        <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Users</li>
                     </ol>
-                    <h6 class="font-weight-bolder mb-0">Tables</h6>
+                    <h6 class="font-weight-bolder mb-0">Users Management</h6>
                 </nav>
                 <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-                    
+
                     <ul class="navbar-nav  justify-content-end">
+
                         
-                        <li class="nav-item d-flex align-items-center">
-                            <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
-                                <i class="fa fa-user me-sm-1"></i>
-                                <span class="d-sm-inline d-none">Sign In</span>
-                            </a>
-                        </li>
                         <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
                             <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
                                 <div class="sidenav-toggler-inner">
@@ -145,7 +140,7 @@
                                 </div>
                             </a>
                         </li>
-                        
+
                     </ul>
                 </div>
             </div>
@@ -208,7 +203,7 @@
                                                     <i class="bi bi-trash-fill fs-6"></i>
                                                 </button>
 
-                                                <!-- Form Delete (disembunyikan, akan dikirim via JS jika dikonfirmasi) -->
+                                                <!-- Form Delete -->
                                                 <form id="delete-form-{{ $userPos->id }}"
                                                     action="{{ route('user_pos.destroy', $userPos->id) }}"
                                                     method="POST"
@@ -216,6 +211,8 @@
                                                     @csrf
                                                     @method('DELETE')
                                                 </form>
+
+
                                             </td>
 
                                         </tr>
@@ -274,24 +271,28 @@
     </script>
 
     <script>
-        let currentDeleteId = null;
+        let deleteUserId = null;
 
-        function showConfirmModal(userId) {
-            currentDeleteId = userId;
+        function showConfirmModal(id) {
+            deleteUserId = id;
             document.getElementById('confirmModal').style.display = 'flex';
         }
 
         function hideConfirmModal() {
+            deleteUserId = null;
             document.getElementById('confirmModal').style.display = 'none';
-            currentDeleteId = null;
         }
 
         function submitDelete() {
-            if (currentDeleteId) {
-                document.getElementById(`delete-form-${currentDeleteId}`).submit();
+            if (deleteUserId) {
+                const form = document.getElementById('delete-form-' + deleteUserId);
+                if (form) {
+                    form.submit();
+                }
             }
         }
     </script>
+
 
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
