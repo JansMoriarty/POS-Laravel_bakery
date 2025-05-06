@@ -21,7 +21,11 @@ Route::get('/login', function () {
 
 Route::post('/login', [App\Http\Controllers\LoginController::class, 'authenticate'])->name('user.login');
 
-
+// Logout route
+Route::post('/logout', function () {
+    Session::forget('user');
+    return redirect('/login'); // atau route ke halaman login kamu
+})->name('logout');
 
 
 

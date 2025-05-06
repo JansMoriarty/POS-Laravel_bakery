@@ -150,25 +150,25 @@
                     </a>
                 </li>
                 <li class="nav-item">
-          <a class="nav-link  " href="{{route('user_pos.index')}}">
-            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-              <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <title>credit-card</title>
-                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                  <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                    <g transform="translate(1716.000000, 291.000000)">
-                      <g transform="translate(453.000000, 454.000000)">
-                        <path class="color-background opacity-6" d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z"></path>
-                        <path class="color-background" d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z"></path>
-                      </g>
-                    </g>
-                  </g>
-                </g>
-              </svg>
-            </div>
-            <span class="nav-link-text ms-1">Users</span>
-          </a>
-        </li>
+                    <a class="nav-link  " href="{{route('user_pos.index')}}">
+                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <title>credit-card</title>
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                                        <g transform="translate(1716.000000, 291.000000)">
+                                            <g transform="translate(453.000000, 454.000000)">
+                                                <path class="color-background opacity-6" d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z"></path>
+                                                <path class="color-background" d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z"></path>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
+                        <span class="nav-link-text ms-1">Users</span>
+                    </a>
+                </li>
             </ul>
         </div>
 
@@ -180,7 +180,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                         <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
-                        <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Product Management</li>
+                        <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Product</li>
                     </ol>
                     <h6 class="font-weight-bolder mb-0">Product Management</h6>
                 </nav>
@@ -188,14 +188,50 @@
                     <div class="ms-md-auto pe-md-3 d-flex align-items-center">
 
                     </div>
-                    <ul class="navbar-nav  justify-content-end">
+                    <ul class="navbar-nav justify-content-end align-items-center">
 
-                        <li class="nav-item d-flex align-items-center">
-                            <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
-                                <i class="fa fa-user me-sm-1"></i>
-                                <span class="d-sm-inline d-none">Sign In</span>
+                        <!-- Profil Pengguna -->
+                        <li class="nav-item dropdown pe-3 d-flex align-items-center">
+                            <a href="javascript:;" class="nav-link text-body d-flex align-items-center p-0" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="{{ asset('assets/img/team-5.jpeg')}}" class="rounded-circle me-2" alt="Avatar" style="width: 36px; height: 36px;">
+                                <span class="d-none d-sm-inline font-weight-bold">
+                                    {{ Session::has('user') ? Session::get('user')->name : 'Guest' }}
+                                </span>
+                                <i class="fa fa-chevron-down ms-2 text-xs"></i>
+
                             </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                @php
+                                $user = Session::get('user');
+                                $role = $user ? $user->role : 'guest';
+                                $badgeClass = $role === 'admin' ? 'bg-gradient-success' : ($role === 'kasir' ? 'bg-gradient-secondary' : 'bg-light');
+                                $roleLabel = ucfirst($role);
+                                @endphp
+
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+
+                                <li class="dropdown-item d-flex justify-content-between align-items-center">
+                                    <span>Role :</span>
+                                    <span class="badge {{ $badgeClass }} text-white">{{ $roleLabel }}</span>
+                                </li>
+
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item text-danger" href="#" onclick="showLogoutModal(event)">
+                                        <i class="fa fa-sign-out me-2"></i>Logout
+                                    </a>
+                                </li>
+                            </ul>
+
+
                         </li>
+
+                        <!-- Toggler Sidenav (mobile) -->
                         <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
                             <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
                                 <div class="sidenav-toggler-inner">
@@ -205,22 +241,13 @@
                                 </div>
                             </a>
                         </li>
-                        <li class="nav-item px-3 d-flex align-items-center">
-                            <a href="javascript:;" class="nav-link text-body p-0">
-                                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown pe-2 d-flex align-items-center">
-                            <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa fa-bell cursor-pointer"></i>
-                            </a>
-                            <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
 
 
 
-                            </ul>
-                        </li>
+
+
                     </ul>
+
                 </div>
             </div>
         </nav>
@@ -442,6 +469,36 @@
         </div>
     </div>
 
+    <!-- Modal Konfirmasi Logout -->
+    <div id="confirmModalLogout" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.4); justify-content:center; align-items:center; z-index:9999;">
+        <div style="background:white; padding:30px; border-radius:20px; width:600px; display: flex; gap: 20px; align-items: center;">
+            <!-- Lottie kiri -->
+            <div style="flex: 0 0 200px; display: flex; justify-content: center;">
+                <dotlottie-player
+                    src="https://lottie.host/ab764c43-5e1a-4eb8-94d6-c8af2945f78f/bMgL8Ph3ek.lottie"
+                    background="transparent"
+                    speed="1"
+                    style="width: 200px; height: 200px"
+                    loop
+                    autoplay>
+                </dotlottie-player>
+            </div>
+
+            <!-- Konten kanan -->
+            <div style="flex: 1;">
+                <h3 style="margin-top: 0;">Keluar dari akun?</h3>
+                <p style="font-size:14px;">Apakah kamu yakin ingin logout dari akunmu?</p>
+                <div style="margin-top: 20px; display:flex; gap: 10px;">
+                    <form id="logoutForm" action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" style="background:crimson; color:white; border:none; padding:8px 16px; border-radius:8px;">Ya, Logout</button>
+                    </form>
+                    <button onclick="hideConfirmModal()" style="background:#ccc; border:none; padding:8px 16px; border-radius:8px;">Batal</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Modal Konfirmasi -->
     <div id="confirmModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.4); justify-content:center; align-items:center; z-index:9999;">
         <div style="background:white; padding:30px; border-radius:20px; width:600px; display: flex; gap: 20px; align-items: center;">
@@ -524,6 +581,27 @@
         type="module"></script>
 
     <script>
+        var win = navigator.platform.indexOf('Win') > -1;
+        if (win && document.querySelector('#sidenav-scrollbar')) {
+            var options = {
+                damping: '0.5'
+            }
+            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+        }
+    </script>
+
+    <script>
+        function showLogoutModal(event) {
+            event.preventDefault();
+            document.getElementById('confirmModalLogout').style.display = 'flex';
+        }
+
+        function hideConfirmModal() {
+            document.getElementById('confirmModalLogout').style.display = 'none';
+        }
+    </script>
+
+    <script>
         let deleteMode = false;
         let editMode = false;
 
@@ -585,6 +663,7 @@
             document.getElementById('deleteForm' + currentFormId).submit();
         }
     </script>
+    
 
 
 

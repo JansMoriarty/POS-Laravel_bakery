@@ -15,6 +15,7 @@
       height: 100%;
       overflow: hidden;
       background-color: #ffffff;
+      font-family: Poppins;
     }
 
     #particles-js {
