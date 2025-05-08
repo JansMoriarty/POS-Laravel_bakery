@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transaction_items', function (Blueprint $table) {
+        Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('transaction_id')->constrained()->onDelete('cascade');
-            $table->foreignId('product_id')->constrained()->onDelete('cascade');
-            $table->integer('qty');
-            $table->decimal('price', 10, 2);
-            $table->decimal('subtotal', 10, 2);
+            $table->string('invoice_number')->unique();
+            $table->foreignId('pengguna_id')->constrained('user_pos')->onDelete('cascade');
+            $table->decimal('total_price', 10, 2);
+            $table->decimal('payment_amount', 10, 2);
+            $table->decimal('change_amount', 10, 2);
+            $table->dateTime('transaction_date');
             $table->timestamps();
         });
     }

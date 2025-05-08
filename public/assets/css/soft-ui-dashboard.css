@@ -28011,11 +28011,11 @@ pre[class*=language-] {
   border: 2px solid transparent;
   transition: all 0.3s ease;
   flex-shrink: 0;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 .category-card:hover {
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 .icon-wrapper {
@@ -28053,7 +28053,8 @@ pre[class*=language-] {
   align-items: center;
   margin-top: 20px;
   gap: 10px;
-  max-width: 1030px; /* kamu bisa ubah jadi 100% kalau mau full */
+  max-width: 1030px;
+  /* kamu bisa ubah jadi 100% kalau mau full */
   width: 100%;
 }
 
@@ -28066,7 +28067,8 @@ pre[class*=language-] {
 }
 
 .search-form button {
-  background-color: #F97316; /* warna pastel soft, bisa diganti sesuai tema kamu */
+  background-color: #F97316;
+  /* warna pastel soft, bisa diganti sesuai tema kamu */
   border: none;
   padding: 16px 20px;
   border-radius: 80px;
@@ -28076,11 +28078,13 @@ pre[class*=language-] {
 
 .search-form button i {
   font-size: 16px;
-  color: white; /* warna icon, bisa disesuaikan */
+  color: white;
+  /* warna icon, bisa disesuaikan */
 }
 
 .search-form button:hover {
-  background-color: #f6c88f; /* warna saat hover */
+  background-color: #f6c88f;
+  /* warna saat hover */
 }
 
 
@@ -28096,8 +28100,8 @@ pre[class*=language-] {
   width: 240px;
   background: white;
   border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
   padding: 16px;
   transition: 0.3s;
   margin: 12px;
@@ -28168,6 +28172,201 @@ pre[class*=language-] {
 .hidden {
   display: none;
 }
+
+.icon-wrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  /* Atur warna background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  /* Ukuran icon */
+  color: #333;
+  transition: 0.3s;
+}
+
+.invoice-sidebar {
+  position: fixed;
+  top: 0;
+  /* sesuaikan jika ada navbar */
+  right: 0px;
+  width: 300px;
+  z-index: 1000;
+
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  background-color: #F8F9FD;
+  padding: 12px;
+  border-radius: 14px;
+
+}
+
+.menu-item img {
+  width: 55px;
+  height: 55px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-right: 15px;
+}
+
+.menu-item-text {
+  flex-grow: 1;
+}
+
+.menu-item-text h6 {
+  margin-bottom: 4px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.menu-item-text p {
+  margin: 0;
+  color: #8C8C8C;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+
+.quantity-counter {
+  position: absolute;
+  bottom: 16px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+
+  border-radius: 12px;
+  padding: 2px 4px;
+}
+
+.btn-plus {
+  background: #F97417;
+  color: white;
+  border: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 0;
+
+  display: flex;               /* tambahkan */
+  align-items: center;         /* tengah vertikal */
+  justify-content: center;     /* tengah horizontal */
+}
+
+.btn-minus {
+  background: transparent;
+  color: #888888;
+  border: 1px solid #cccccc;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 0;
+
+  display: flex;               /* tambahkan */
+  align-items: center;         /* tengah vertikal */
+  justify-content: center;     /* tengah horizontal */
+}
+
+
+
+.quantity-counter .qty-number {
+  margin: 0 6px;
+  font-size: 12px;
+  min-width: 12px;
+  text-align: center;
+}
+
+.list-group-item {
+  border: none !important;
+  background-color: transparent !important;
+  padding: 8px 0; /* optional: rapikan jarak */
+}
+
+.scroll-area {
+  position: relative;
+}
+
+#empty-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  pointer-events: none; /* supaya klik tidak mengganggu elemen di bawah */
+}
+
+.label-cash {
+  font-weight: normal;
+  font-size: 16px;
+  margin: 0;
+  color: #747474;
+}
+
+.input-wrapper {
+  position: relative;
+  width: 140px; /* tambahkan lebar agar cukup untuk label + input */
+  border-bottom: 1px solid #ccc;
+  transition: border-color 0.3s ease;
+}
+
+.input-wrapper:focus-within {
+  border-bottom: 1px solid #888;
+}
+
+.currency-label {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #888;
+  margin-right: 4px;
+  font-size: 14px;
+}
+
+.input-wrapper input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #888;
+  font-size: 14px;
+  -moz-appearance: textfield; /* Firefox */
+  padding-bottom: 4px;
+}
+
+/* Saat aktif (focus) */
+.input-wrapper input:focus {
+  color: #888; /* tetap abu-abu */
+}
+
+.input-wrapper:focus-within {
+  border-bottom: 2px solid #888; /* garis bawah ditebalkan & abu-abu saat aktif */
+}
+
+.input-wrapper input::-webkit-outer-spin-button,
+.input-wrapper input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.payment-box {
+  background-color: #F8F9FD;
+  
+  border-radius: 12px;
+}
+
+
+
 
 
 

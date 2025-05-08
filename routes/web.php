@@ -4,8 +4,12 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserPosController;
+use App\Http\Controllers\TransactionController;
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+
+Route::get('/kasir', [TransactionController::class, 'index'])->name('kasir.index');
 
 
 
@@ -21,6 +25,8 @@ Route::get('/login', function () {
 
 Route::post('/login', [App\Http\Controllers\LoginController::class, 'authenticate'])->name('user.login');
 
+Route::post('/kasir/store', [TransactionController::class, 'store'])->name('kasir.store');
+
 // Logout route
 Route::post('/logout', function () {
     Session::forget('user');
@@ -28,7 +34,8 @@ Route::post('/logout', function () {
 })->name('logout');
 
 
-
+Route::get('/receipt/{id}', [TransactionController::class, 'showReceipt']);
+    
 
 Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
 
