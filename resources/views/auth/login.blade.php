@@ -1,118 +1,253 @@
-<!--
-=========================================================
-* Soft UI Dashboard 3 - v1.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard
-* Copyright 2024 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://www.creative-tim.com/license)
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
-    <title>
-        Soft UI Dashboard 3 by Creative Tim
-    </title>
-    <!--     Fonts and icons     -->
-    <link href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,800" rel="stylesheet" />
-    <!-- Nucleo Icons -->
-    <link href="https://demos.creative-tim.com/soft-ui-dashboard/assets/css/nucleo-icons.css" rel="stylesheet" />
-    <link href="https://demos.creative-tim.com/soft-ui-dashboard/assets/css/nucleo-svg.css" rel="stylesheet" />
-    <!-- Font Awesome Icons -->
-    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-    <!-- CSS Files -->
-    <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.1.0" rel="stylesheet" />
-    <!-- Nepcha Analytics (nepcha.com) -->
-    <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
-    <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.0/css/all.css">
+
+    <style>
+        /* --- Tetap sama seperti sebelumnya --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            height: 600px;
+            background: #fff;
+            border-radius: 25px;
+            display: flex;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .left {
+            background-color: #F97417;
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .logo-container {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .logo-container span {
+            color: #fff;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .right {
+            width: 60%;
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .right h2 {
+            margin-bottom: 15px;
+            font-size: 34px;
+            font-weight: 600;
+        }
+
+        .right p {
+            margin-bottom: 35px;
+            color: #666;
+            font-size: 16px;
+        }
+
+        .input-group {
+            margin-bottom: 18px;
+            position: relative;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            font-size: 15px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: #F97417;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .form-check {
+            display: flex;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+
+        .form-check input {
+            margin-right: 10px;
+        }
+
+        .btn {
+            background-color: #F97417;
+            border: none;
+            padding: 14px;
+            width: 100%;
+            border-radius: 12px;
+            color: #fff;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background-color: #e56510;
+        }
+
+        /* Snackbar styles */
+        #snackbar {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background-color: #e74c3c;
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            top: 20px;
+            font-size: 16px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: opacity 0.5s, top 0.5s;
+        }
+
+        #snackbar.show {
+            visibility: visible;
+            opacity: 1;
+            top: 40px;
+        }
+    </style>
 </head>
 
-<body class="">
-    <div class="container position-sticky z-index-sticky top-0">
-        <div class="row">
-            <div class="col-12">
-                <!-- Navbar -->
-
-                <!-- End Navbar -->
+<body>
+    <div class="container">
+        <div class="left">
+            <div class="logo-container">
+                <img src="../assets/img/cremeco_white.png" alt="Logo">
+                <span>Créme Co.</span>
             </div>
+            <dotlottie-player
+                src="https://lottie.host/61d692b8-e36b-4545-b2a5-4431c1834383/TcKDyLJzg6.lottie"
+                background="transparent"
+                speed="1"
+                style="width: 350px; height: 350px"
+                loop
+                autoplay>
+            </dotlottie-player>
+        </div>
+        <div class="right">
+            <h2>Welcome back</h2>
+            <p>Enter your email and password to sign in</p>
+
+            <form method="POST" action="{{ route('user.login') }}">
+                @csrf
+
+                <div class="input-group">
+                    <input type="email" name="email" placeholder="Enter email" required>
+                </div>
+
+                <div class="input-group">
+                    <input type="password" id="passwordInput" name="password" placeholder="Password" required>
+                    <button type="button" class="toggle-password" id="togglePassword">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+                <br>
+
+                <button type="submit" class="btn">Login</button>
+            </form>
         </div>
     </div>
-    <main class="main-content  mt-0">
-        <section>
-            <div class="page-header min-vh-75">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto">
-                            <div class="card card-plain mt-8">
-                                <div class="card-header pb-0 text-left bg-transparent">
-                                    <h3 class="font-weight-bolder  ">Welcome back</h3>
-                                    <p class="mb-0">Enter your email and password to sign in</p>
-                                </div>
-                                <div class="card-body">
-                                    <form role="form" action="{{ route('user.login') }}" method="POST">
-                                        @csrf
-                                        <label>Email</label>
-                                        <div class="mb-3">
-                                            <input type="email" name="email" class="form-control" placeholder="Email" required>
-                                        </div>
-                                        <label>Password</label>
-                                        <div class="mb-3">
-                                            <input type="password" name="password" class="form-control" placeholder="Password" required>
-                                        </div>
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="rememberMe" name="remember">
-                                            <label class="form-check-label" for="rememberMe">Remember me</label>
-                                        </div>
-                                        <div class="text-center">
-                                            <button type="submit" class="btn bg-gradient-primary w-100 mt-4 mb-0">Sign in</button>
-                                        </div>
-                                    </form>
 
-                                </div>
+    <!-- Snackbar -->
+    <div id="snackbar">{{ session('error') }}</div>
 
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="oblique position-absolute top-0 h-100 d-md-block d-none me-n8">
-                                <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6" style="background-image:url('../assets/img/curved-images/curved-8.jpg')"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-    <!-- -------- START FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
+    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
 
-    <!-- -------- END FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
-    <!--   Core JS Files   -->
-    <script src="../assets/js/core/popper.min.js"></script>
-    <script src="../assets/js/core/bootstrap.min.js"></script>
-    <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
-    <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
     <script>
-        var win = navigator.platform.indexOf('Win') > -1;
-        if (win && document.querySelector('#sidenav-scrollbar')) {
-            var options = {
-                damping: '0.5'
+        const passwordInput = document.getElementById('passwordInput');
+        const togglePassword = document.getElementById('togglePassword');
+        const icon = togglePassword.querySelector('i');
+
+        togglePassword.addEventListener('click', () => {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+
+            if (type === 'password') {
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            } else {
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
             }
-            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-        }
+        });
+
+        // Snackbar logic
+        window.onload = function() {
+            const snackbar = document.getElementById('snackbar');
+            if (snackbar.textContent.trim() !== '') {
+                snackbar.classList.add('show');
+                setTimeout(() => {
+                    snackbar.classList.remove('show');
+                }, 3000); // hide after 3 seconds
+            }
+        };
     </script>
-    <!-- Github buttons -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="../assets/js/soft-ui-dashboard.min.js?v=1.1.0"></script>
 </body>
 
 </html>

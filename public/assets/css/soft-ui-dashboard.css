@@ -28193,8 +28193,12 @@ pre[class*=language-] {
   top: 0;
   /* sesuaikan jika ada navbar */
   right: 0px;
-  width: 300px;
+  width: 30vw;
   z-index: 1000;
+  max-width: 400px;
+  /* maksimal 350px di layar besar */
+  min-width: 250px;
+  /* minimal 250px di layar kecil */
 
 }
 
@@ -28220,16 +28224,16 @@ pre[class*=language-] {
 }
 
 .menu-item-text h6 {
-  margin-bottom: 4px;
+  margin-bottom: 3px;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .menu-item-text p {
   margin: 0;
   color: #8C8C8C;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 
@@ -28248,32 +28252,38 @@ pre[class*=language-] {
   background: #F97417;
   color: white;
   border: none;
-  width: 16px;
-  height: 16px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  font-size: 12px;
+  font-size: 16px;
   cursor: pointer;
   padding: 0;
 
-  display: flex;               /* tambahkan */
-  align-items: center;         /* tengah vertikal */
-  justify-content: center;     /* tengah horizontal */
+  display: flex;
+  /* tambahkan */
+  align-items: center;
+  /* tengah vertikal */
+  justify-content: center;
+  /* tengah horizontal */
 }
 
 .btn-minus {
   background: transparent;
   color: #888888;
   border: 1px solid #cccccc;
-  width: 16px;
-  height: 16px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  font-size: 12px;
+  font-size: 16px;
   cursor: pointer;
   padding: 0;
 
-  display: flex;               /* tambahkan */
-  align-items: center;         /* tengah vertikal */
-  justify-content: center;     /* tengah horizontal */
+  display: flex;
+  /* tambahkan */
+  align-items: center;
+  /* tengah vertikal */
+  justify-content: center;
+  /* tengah horizontal */
 }
 
 
@@ -28288,7 +28298,8 @@ pre[class*=language-] {
 .list-group-item {
   border: none !important;
   background-color: transparent !important;
-  padding: 8px 0; /* optional: rapikan jarak */
+  padding: 5px 0;
+  /* optional: rapikan jarak */
 }
 
 .scroll-area {
@@ -28302,7 +28313,8 @@ pre[class*=language-] {
   transform: translate(-50%, -50%);
   width: 100%;
   text-align: center;
-  pointer-events: none; /* supaya klik tidak mengganggu elemen di bawah */
+  pointer-events: none;
+  /* supaya klik tidak mengganggu elemen di bawah */
 }
 
 .label-cash {
@@ -28314,7 +28326,8 @@ pre[class*=language-] {
 
 .input-wrapper {
   position: relative;
-  width: 140px; /* tambahkan lebar agar cukup untuk label + input */
+  width: 140px;
+  /* tambahkan lebar agar cukup untuk label + input */
   border-bottom: 1px solid #ccc;
   transition: border-color 0.3s ease;
 }
@@ -28340,17 +28353,20 @@ pre[class*=language-] {
   font-weight: 700;
   color: #888;
   font-size: 14px;
-  -moz-appearance: textfield; /* Firefox */
+  -moz-appearance: textfield;
+  /* Firefox */
   padding-bottom: 4px;
 }
 
 /* Saat aktif (focus) */
 .input-wrapper input:focus {
-  color: #888; /* tetap abu-abu */
+  color: #888;
+  /* tetap abu-abu */
 }
 
 .input-wrapper:focus-within {
-  border-bottom: 2px solid #888; /* garis bawah ditebalkan & abu-abu saat aktif */
+  border-bottom: 2px solid #888;
+  /* garis bawah ditebalkan & abu-abu saat aktif */
 }
 
 .input-wrapper input::-webkit-outer-spin-button,
@@ -28361,7 +28377,7 @@ pre[class*=language-] {
 
 .payment-box {
   background-color: #F8F9FD;
-  
+
   border-radius: 12px;
 }
 

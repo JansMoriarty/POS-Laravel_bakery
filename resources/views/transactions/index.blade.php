@@ -271,7 +271,11 @@
 
                 <div class="invoice-sidebar">
                     <div class="card shadow-sm p-3 d-flex flex-column" style="height: 100vh;">
-                        <h6 class="mb-3">Kasir</h6>
+                        <div class="mb-3" style="display: flex; align-items: center; color:black;">
+                            <i class="fas fa-cash-register" style="font-size: 1.3rem; margin-right: 8px;"></i>
+                            <h6 class="ms-1"  style="margin: 0; line-height: 1;">Kasir</h6>
+                        </div>
+
 
 
 
@@ -350,6 +354,29 @@
             </div>
         </div>
     </div>
+
+
+    <!-- Modal Cash Kosong -->
+    <div class="modal fade" id="cashAlertModal" tabindex="-1" aria-labelledby="cashAlertModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center p-4" style="border: none; background: #fff; border-radius: 12px;">
+                <div class="modal-body">
+                    <dotlottie-player
+                        src="https://lottie.host/562cec2c-2775-4018-bd58-3c398d19a741/1LSGlnJTYY.lottie"
+                        background="transparent"
+                        speed="1"
+                        style="width: 160px; height: 200px; margin: 0 auto;"
+                        loop
+                        autoplay>
+                    </dotlottie-player>
+                    <h5 class="mt-3" id="cashAlertModalLabel">Masukkan jumlah cash yang valid!</h5>
+                    <button type="button" class="btn btn-secondary mt-3" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
     <!-- Modal Transaksi Sukses -->
     <!-- Modal Transaksi Sukses -->
@@ -500,7 +527,8 @@
 
                 const cash = parseFloat(document.getElementById('cash-input').value);
                 if (isNaN(cash) || cash <= 0) {
-                    alert('Masukkan jumlah cash yang valid!');
+                    const cashAlertModal = new bootstrap.Modal(document.getElementById('cashAlertModal'));
+                    cashAlertModal.show();
                     return;
                 }
 
