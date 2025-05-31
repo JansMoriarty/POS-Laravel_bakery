@@ -72,11 +72,31 @@
             border-top: 1px dashed #000;
             margin: 10px 0;
         }
+        .button-group {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .button-group a,
+        .button-group button {
+            display: inline-block;
+            padding: 8px 12px;
+            margin: 5px;
+            font-size: 14px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #333;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .button-group a:hover,
+        .button-group button:hover {
+            background-color: #555;
+        }
     </style>
 </head>
 <body>
     <div class="header">
-        <!-- Ganti src dengan path/logo toko -->
         <img src="{{asset('assets/img/cremeco.png')}}" alt="Logo Toko">
         <h1>Créme Co.</h1>
     </div>
@@ -122,6 +142,11 @@
     <div class="thank-you">
         <p>*** TERIMA KASIH ***</p>
         <p>Telah berbelanja di toko kami</p>
+    </div>
+
+    <div class="button-group">
+        <a href="{{ route('kasir.index') }}">Kembali</a>
+        <button onclick="window.print()">Print Struk</button>
     </div>
 </body>
 </html>
