@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -96,5 +95,15 @@ class TransactionController extends Controller
         $transaction = Transaction::with(['items.product', 'pengguna'])->findOrFail($id);
 
         return view('receipt.show', compact('transaction'));
+    }
+
+    // ✅ Tambahan Method Riwayat
+    public function riwayat()
+    {
+        $transactions = Transaction::with('items.product')
+            ->orderBy('created_at', 'desc')
+            ->paginate(10); // Ubah jadi ->get() jika tidak ingin pakai pagination
+
+        return view('transactions.riwayat', compact('transactions'));
     }
 }
