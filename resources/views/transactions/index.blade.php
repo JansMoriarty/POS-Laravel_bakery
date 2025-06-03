@@ -154,6 +154,7 @@
                         <span class="nav-link-text ms-1">Products Management</span>
                     </a>
                 </li>
+                @if ($user && $user->role === 'admin')
                 <li class="nav-item">
                     <a class="nav-link  " href="{{route('user_pos.index')}}">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -174,6 +175,11 @@
                         <span class="nav-link-text ms-1">Users</span>
                     </a>
                 </li>
+                @endif
+
+                @php
+                $user = Session::get('user');
+                @endphp
                 <li class="nav-item">
                     <a class="nav-link  active" href="../pages/virtual-reality.html">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -294,7 +300,7 @@
                     <div class="card shadow-sm p-3 d-flex flex-column" style="height: 100vh;">
                         <div class="mb-3" style="display: flex; align-items: center; color:black;">
                             <i class="fas fa-cash-register" style="font-size: 1.3rem; margin-right: 8px;"></i>
-                            <h6 class="ms-1"  style="margin: 0; line-height: 1;">Kasir</h6>
+                            <h6 class="ms-1" style="margin: 0; line-height: 1;">Kasir</h6>
                         </div>
 
 

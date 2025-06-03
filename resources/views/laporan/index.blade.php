@@ -92,6 +92,11 @@
                     </a>
                 </li>
 
+                @php
+                $user = Session::get('user');
+                @endphp
+
+                @if ($user && $user->role === 'admin')
                 <li class="nav-item">
                     <a class="nav-link  " href="{{route('user_pos.index')}}">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -112,9 +117,9 @@
                         <span class="nav-link-text ms-1">Users</span>
                     </a>
                 </li>
+                @endif
 
-
-
+                @if ($user && $user->role === 'kasir')
                 <li class="nav-item">
                     <a class="nav-link  " href="{{route('kasir.index')}}">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -136,6 +141,8 @@
                         <span class="nav-link-text ms-1">Transactions</span>
                     </a>
                 </li>
+                @endif
+
 
                 <li class="nav-item">
                     <a class="nav-link  active" href="../pages/billing.html">
@@ -561,8 +568,12 @@
         gradientStroke2.addColorStop(0, 'rgba(20,23,39,0)');
 
         // Ambil data dari Laravel
-        const labelTanggal = {!!json_encode($transaksiPerHari->pluck('tanggal')) !!};
-        const jumlahTransaksi = {!!json_encode($transaksiPerHari->pluck('total_transaksi'))!!};
+        const labelTanggal = {
+            !!json_encode($transaksiPerHari - > pluck('tanggal')) !!
+        };
+        const jumlahTransaksi = {
+            !!json_encode($transaksiPerHari - > pluck('total_transaksi')) !!
+        };
 
         new Chart(ctx2, {
             type: "line",

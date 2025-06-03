@@ -42,6 +42,9 @@ Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan.index
 
 
 
+
+
+
 Route::get('/receipt/{id}', [TransactionController::class, 'showReceipt'])->name('receipt.show');
 
     
