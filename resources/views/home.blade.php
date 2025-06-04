@@ -355,7 +355,6 @@
              top: 100%; 
              left: 0; 
              background: white; 
-      
              width: 220px; 
              z-index: 1000;
              box-shadow: 0 1px 10px rgba(0, 0, 0, 0.09);
