@@ -568,12 +568,8 @@
         gradientStroke2.addColorStop(0, 'rgba(20,23,39,0)');
 
         // Ambil data dari Laravel
-        const labelTanggal = {
-            !!json_encode($transaksiPerHari - > pluck('tanggal')) !!
-        };
-        const jumlahTransaksi = {
-            !!json_encode($transaksiPerHari - > pluck('total_transaksi')) !!
-        };
+        const labelTanggal = {!!json_encode($transaksiPerHari->pluck('tanggal'))!!};
+        const jumlahTransaksi = {!!json_encode($transaksiPerHari->pluck('total_transaksi'))!!};
 
         new Chart(ctx2, {
             type: "line",

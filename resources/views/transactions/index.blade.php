@@ -154,6 +154,9 @@
                         <span class="nav-link-text ms-1">Products Management</span>
                     </a>
                 </li>
+                @php
+                $user = Session::get('user');
+                @endphp
                 @if ($user && $user->role === 'admin')
                 <li class="nav-item">
                     <a class="nav-link  " href="{{route('user_pos.index')}}">
@@ -177,9 +180,7 @@
                 </li>
                 @endif
 
-                @php
-                $user = Session::get('user');
-                @endphp
+                
                 <li class="nav-item">
                     <a class="nav-link  active" href="../pages/virtual-reality.html">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
